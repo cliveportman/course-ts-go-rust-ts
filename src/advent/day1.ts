@@ -23,11 +23,21 @@ const substrings = [
 ];
 
 console.time("advent1");
-// read the input file
-const text = readFileSync("./src/advent1/deets.txt", "utf8");
+
+// read the input file, with error handling
+let input = "";
+try {
+  input = readFileSync("./src/advent/input.txt", "utf8");
+} catch (err) {
+  if (err instanceof Error) {
+    console.error("Error", err.message);
+  } else {
+    console.error("An unknown error occurred");
+  }
+}
 
 // split the text file into an array of strings
-const lines = text.split("\n");
+const lines = input.split("\n");
 
 const numbers = lines.map((line) => {
   let firstSubstring = "";
